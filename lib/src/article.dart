@@ -1,178 +1,164 @@
 class Article{
 
-  final String text;
-  final String domain;
+  final String title;
+  final String url;
   final String by;
-  final String age;
+  final int time;
   final int score;
-  final int commentsCount;
 
   const Article({
-    this.text,
-    this.domain,
+    this.title,
+    this.url,
     this.by,
-    this.age,
-    this.score,
-    this.commentsCount
+    this.time,
+    this.score
   });
+
+  factory Article.fromJson(Map<String,dynamic> jsonString){
+    if (jsonString == null)
+      return null;
+
+    return Article(
+      title: jsonString['title']?? '[title]',
+      url: jsonString['url']?? '[text]',
+      by: jsonString['by']?? '[text]',
+      time: jsonString['time']?? 2121,
+      score: jsonString['score']?? 1111,
+    );
+  }
 }
 
 final articles = [
   new Article(
-    text:
+      title:
       "Microplastics found in 93% of bottled water tested in global study (cbc.ca)",
-    domain:
+      url:
       "cbc.ca",
-    by:
+      by:
       "simonebrunozzi",
-    age:
-      "13 hours ago",
-    score:
-      639,
-    commentsCount:
-      307
+      time:
+      1121,
+      score:
+      639
   ),
   new Article(
-      text:
+      title:
       "The Fugate family of Kentucky has had blue skin for centuries",
-      domain:
+      url:
       "allthatsinteresting.com",
       by:
       "heshiebee",
-      age:
-      "10 hours ago",
+      time:
+      1121,
       score:
-      221,
-      commentsCount:
-      54
+      221
   ),
   new Article(
-      text:
+      title:
       "Science’s pirate queen",
-      domain:
+      url:
       "theverge.com",
       by:
       "ColinWright",
-      age:
-      "9 hours ago",
+      time:
+      1121,
       score:
-      47,
-      commentsCount:
-      49
+      47
   ),
   new Article(
-      text:
+      title:
       "I built a wind map with WebGL (2017)",
-      domain:
+      url:
       "mapbox.com",
       by:
       "bhousel",
-      age:
-      "5 hours ago",
+      time:
+      1212,
       score:
-      47,
-      commentsCount:
-      7
+      47
   ),
   new Article(
-      text:
+      title:
       "Rudder, an open source Segment alternative",
-      domain:
+      url:
       "github.com",
       by:
       "feross",
-      age:
-      "8 hours ago",
+      time:
+      1211,
       score:
-      173,
-      commentsCount:
-      63
+      173
   ),
   new Article(
-      text:
+      title:
       "Modern Script Loading",
-      domain:
+      url:
       "jasonformat.com",
       by:
       "fagnerbrack",
-      age:
-      "8 hours ago",
+      time:
+      1121,
       score:
-      51,
-      commentsCount:
-      9
+      51
   ),
   new Article(
-      text:
+      title:
       "Dog-walking startup Wag raised 300M, then things got messy",
-      domain:
+      url:
       "cnn.com",
       by:
       "danso",
-      age:
-      "12 hours ago",
+      time:
+      1212,
       score:
-      210,
-      commentsCount:
-      202
+      210
   ),
   new Article(
-      text:
+      title:
       "SNES Cartridges and Enhancement Chips",
-      domain:
+      url:
       "twitter.com",
       by:
       "hide",
-      age:
-      "12 hours ago",
+      time:
+      1211,
       score:
-      210,
-      commentsCount:
-      84
+      210
   ),
   new Article(
-      text:
+      title:
       "Men Are Waiting to Share Some Feelings (2018)",
-      domain:
+      url:
       "nytimes.com",
       by:
       "ignored",
-      age:
-      "10",
+      time:
+      1211,
       score:
-      232,
-      commentsCount:
-      30
+      232
   ),
   new Article(
-      text:
+      title:
       "On Sharding",
-      domain:
+      url:
       "tbray.org",
       by:
       "Isofarro",
-      age:
-      "12",
+      time:
+      1211,
       score:
-      154,
-      commentsCount:
-      12
+      154
   ),
   new Article(
-      text:
+      title:
       "Cash/Consent: The war on sex work",
-      domain:
+      url:
       "nplusonemag.com",
       by:
       "Spellman",
-      age:
-      "12",
+      time:
+      1212,
       score:
-      217,
-      commentsCount:
-      189
+      217
   )
 ];
-
-
-

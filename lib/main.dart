@@ -50,48 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-//  Non Expandable:
-//  Widget _buildItem(Article article){
-//    return Padding(
-//      padding: const EdgeInsets.all(8.0),
-//      child: new ListTile(title: Column(
-//        children: <Widget>[
-//          Column(
-//            children: <Widget>[
-//              Column(
-//                children: <Widget>[
-//                  new Text(article.text, style: new TextStyle(fontSize: 24.0)),
-//                ],
-//              ),
-//            ],
-//          ),
-//        ],
-//      ),
-//      subtitle: new Text("${article.commentsCount} comments"),
-//      onTap: () async {
-//        final fakeUrl = "http://${article.domain}";
-//        if ( await canLaunch(fakeUrl)) {
-//          launch("http://${article.domain}");
-//        }
-//      }),
-//    );
-//  }
-
   Widget _buildItem(Article article){
     return new Padding(
-        key: Key(article.text),
+        key: Key(article.title),
         padding: const EdgeInsets.all(8.0),
         child: new ExpansionTile(
-            title: new Text(article.text, style: new TextStyle(fontSize: 24.0)),
+            title: new Text(article.title, style: new TextStyle(fontSize: 24.0)),
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new Text("${article.commentsCount} comments"),
+                  new Text("Score ${article.score}"),
                   new IconButton(onPressed: () async {
-                    final fakeUrl = "http://${article.domain}";
+                    final fakeUrl = "http://${article.url}";
                     if ( await canLaunch(fakeUrl)) {
-                      launch("http://${article.domain}");
+                      launch("http://${article.url}");
                     }},
                       color: Colors.red,
                       icon: new Icon(Icons.launch))
