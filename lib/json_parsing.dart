@@ -1,13 +1,65 @@
-import 'package:hn_app/src/article.dart';
 import 'dart:convert' as json;
+import 'package:built_value/built_value.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/serializer.dart';
+import 'serializers.dart';
+part 'json_parsing.g.dart';
 
-List<int> parseTopStories(String jsonStr){
-  final parsed = json.jsonDecode(jsonStr);
-  final listOfIds = List<int>.from(parsed);
-  return listOfIds;
+abstract class Article implements Built<Article, ArticleBuilder> {
+  static Serializer<Article> get serializer => _$articleSerializer;
+
+  int get id;
+
+  @nullable
+  bool get deleted;
+
+  @nullable
+  String get type;
+
+  @nullable
+  String get by;
+
+  @nullable
+  int get time;
+
+  @nullable
+  int get text;
+
+  @nullable
+  bool get dead;
+
+  @nullable
+  int get parent;
+
+  @nullable
+  int get poll;
+
+  BuiltList<int> get kids;
+
+  @nullable
+  String get url;
+
+  @nullable
+  int get score;
+
+  @nullable
+  String get title;
+
+  BuiltList<int> get parts;
+
+  @nullable
+  int get descendants;
+
+  Article._();
+  factory Article([void Function(ArticleBuilder) updates]) = _$Article;
 }
 
-Article parseArticle(String jsonStr){
+List<int> parseTopStories(String jsonStr) {
+  return [];
+}
+
+Article parseArticle(String jsonStr) {
   final parsed = json.jsonDecode(jsonStr);
-  return Article.fromJson(parsed);
+  Article article = standardSerializers.deserializeWith(Article.serializer, parsed);
+  return article;
 }
