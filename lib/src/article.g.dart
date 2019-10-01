@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'json_parsing.dart';
+part of 'article.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -20,6 +20,14 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
     final result = <Object>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'kids',
+      serializers.serialize(object.kids,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(int)])),
+      'parts',
+      serializers.serialize(object.parts,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(int)])),
     ];
     if (object.deleted != null) {
       result
@@ -69,13 +77,6 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
         ..add(serializers.serialize(object.poll,
             specifiedType: const FullType(int)));
     }
-    if (object.kids != null) {
-      result
-        ..add('kids')
-        ..add(serializers.serialize(object.kids,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
-    }
     if (object.url != null) {
       result
         ..add('url')
@@ -93,13 +94,6 @@ class _$ArticleSerializer implements StructuredSerializer<Article> {
         ..add('title')
         ..add(serializers.serialize(object.title,
             specifiedType: const FullType(String)));
-    }
-    if (object.parts != null) {
-      result
-        ..add('parts')
-        ..add(serializers.serialize(object.parts,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(int)])));
     }
     if (object.descendants != null) {
       result
@@ -246,6 +240,12 @@ class _$Article extends Article {
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('Article', 'id');
+    }
+    if (kids == null) {
+      throw new BuiltValueNullFieldError('Article', 'kids');
+    }
+    if (parts == null) {
+      throw new BuiltValueNullFieldError('Article', 'parts');
     }
   }
 
@@ -446,20 +446,20 @@ class ArticleBuilder implements Builder<Article, ArticleBuilder> {
               dead: dead,
               parent: parent,
               poll: poll,
-              kids: _kids?.build(),
+              kids: kids.build(),
               url: url,
               score: score,
               title: title,
-              parts: _parts?.build(),
+              parts: parts.build(),
               descendants: descendants);
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'kids';
-        _kids?.build();
+        kids.build();
 
         _$failedField = 'parts';
-        _parts?.build();
+        parts.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Article', _$failedField, e.toString());

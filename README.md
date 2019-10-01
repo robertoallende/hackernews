@@ -32,8 +32,13 @@ Topics covered:
  - [Built Value](https://youtu.be/rfagvy5xCW0?t=140)
  - [Built value Documentation](https://youtu.be/rfagvy5xCW0?t=608)
  - [End of first part: source gen of json parse](https://youtu.be/rfagvy5xCW0?t=1640)
+ - [HTTP Overrides](https://youtu.be/rfagvy5xCW0?t=1925)
+ - [const vs final in dart/flutter](https://youtu.be/rfagvy5xCW0?t=2044)
+ - [Http Package](https://youtu.be/rfagvy5xCW0?t=2220)
+ - [Basics of HTTP class in Dart/Flutter](https://youtu.be/rfagvy5xCW0?t=3029)
  
 Resources mentioned
  - [Dart’s built_value for Serialization](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159)
  - The command to generate code is '$ flutter packages pub run build_runner build'
+ - The command to get packages after changing pubspec.yaml is '$ flutter packages get'
  
