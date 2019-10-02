@@ -78,3 +78,15 @@ Resources mentioned
   - [Font Awesome Icons](https://pub.dev/packages/font_awesome_flutter)
   - [Tween Animation](https://api.flutter.dev/flutter/animation/Tween-class.html)
   - [Flutter Animations](https://flutter.dev/docs/development/ui/animations)
+  
+### Episodes 6: [Packages and Plugins](https://www.youtube.com/watch?v=ht2bDlJd2c4&t=67s) 
+  
+### Episodes 7: [Barometer Plugins](https://www.youtube.com/watch?v=wQj-lKfBvbQ)  
+   
+### v0.6 - Episode 8
+Code Cleanup and Fixing Pub Versioning in Hacker News Ap [Episode video](https://www.youtube.com/watch?v=LrQWzOkC0XQ).
+   
+Topics covered:
+- [Fixing Warning](https://youtu.be/LrQWzOkC0XQ?t=308)
+- [Fix for This class (or a class which this class inherits from) is marked as '@immutable'](https://youtu.be/LrQWzOkC0XQ?t=325) 
+- 

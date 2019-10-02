@@ -46,8 +46,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  List<Article> _articles = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class LoadingInfo extends StatefulWidget {
-  Stream<bool> _isLoading;
+  final Stream<bool> _isLoading;
 
   LoadingInfo(this._isLoading);
 

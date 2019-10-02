@@ -46,6 +46,10 @@ class HackerNewsBloc {
     });
   }
 
+  void close(){
+    _stotiesTypeController.close();
+  }
+
   Stream<List<Article>> get articles => _articlesSubject.stream;
 
   Stream<bool> get isLoading => _isLoadingSubject.stream;
@@ -56,6 +60,7 @@ class HackerNewsBloc {
     if (storyRes.statusCode == 200) {
       return parseArticle(storyRes.body);
     }
+    throw HackerNewsApiError("Article $id couldn't be fetched");
   }
 
   Future<Null> _updateArticles(List<int> articlesIds) async {
@@ -73,4 +78,10 @@ class HackerNewsBloc {
     });
   }
 
+}
+
+class HackerNewsApiError extends Error{
+  final String message;
+
+  HackerNewsApiError(this.message);
 }
