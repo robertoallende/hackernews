@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:hn_app/src/hn_bloc.dart';
 import 'package:hn_app/src/article.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   final hnBloc = HackerNewsBloc();
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
       home: MyHomePage(title: 'Flutter Hacker News', bloc: bloc),
     );
@@ -42,14 +44,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
+
   List<Article> _articles = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
+          title: Text(widget.title),
+          leading: LoadingInfo(widget.bloc.isLoading)),
       body: StreamBuilder<UnmodifiableListView<Article>>(
           stream: widget.bloc.articles,
           initialData: UnmodifiableListView<Article>([]),
@@ -57,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: snapshot.data.map(_buildItem).toList(),
               )),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
             title: Text('Top Stories'),
@@ -69,14 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         onTap: (index) {
-          if (index == 0){
-            print('Top Stories Tapped');
+          if (index == 0) {
             widget.bloc.storiesType.add(StoriesType.topStories);
-          }
-          else {
-            print('New Stories Tapped');
+          } else {
             widget.bloc.storiesType.add(StoriesType.newStories);
           }
+          setState(() {
+            _currentIndex = index;
+          });
         },
       ),
     );
@@ -104,5 +108,41 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               )
             ]));
+  }
+}
+
+class LoadingInfo extends StatefulWidget {
+  Stream<bool> _isLoading;
+
+  LoadingInfo(this._isLoading);
+
+  @override
+  createState() => LoadingInfoState();
+}
+
+class LoadingInfoState extends State<LoadingInfo>
+    with TickerProviderStateMixin {
+  AnimationController _controller;
+
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 1));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: widget._isLoading,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          _controller.forward().then((_) {
+            _controller.reverse();
+          });
+          return FadeTransition(
+            child: Icon(FontAwesomeIcons.hackerNewsSquare),
+            opacity: Tween(begin: 1.0, end: .5).animate(
+                CurvedAnimation(curve: Curves.easeIn, parent: _controller)),
+          ); // FadeTransition
+        }); // StreamBuilder
   }
 }
