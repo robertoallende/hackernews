@@ -56,6 +56,7 @@ class HackerNewsBloc {
       } else {
         throw HackerNewsApiError("Article $id couldn't be fetched");
       }
+      return _cachingArticles[id];
     }
     return _cachingArticles[id];
   }

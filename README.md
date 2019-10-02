@@ -101,3 +101,20 @@ Resources mentioned
   - [Preparing an Android app for release](https://flutter.dev/docs/deployment/android)
   - [Preparing an iOS app for release](https://flutter.dev/docs/deployment/ios)
   
+### v0.7 - Episode 9
+Material Components, Material.io, and Theming.
+
+Topics covered:
+  - [Material Guidelines](https://youtu.be/kxSVpYc2osA)
+  - [ThemeData](https://youtu.be/kxSVpYc2osA?t=513)
+  - [Design and character spaces](https://youtu.be/kxSVpYc2osA?t=1071)
+  - [Constrast Ratio](https://youtu.be/kxSVpYc2osA?t=1577)
+  - [Changing fonts](https://youtu.be/kxSVpYc2osA?t=2200)
+  - [Recap](https://youtu.be/kxSVpYc2osA?t=2609)
+  
+Resources mentioned
+  - [Material Guidelines](https://material.io/design/)
+  - [Material Studies](https://material.io/design/material-studies/)
+  - [Constrast Ratio](https://contrast-ratio.com/)
+  - [Google Fonts](https://fonts.google.com)
+  
