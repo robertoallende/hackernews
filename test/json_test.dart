@@ -32,7 +32,7 @@ void main() {
             'https://hacker-news.firebaseio.com/v0/item/${idList.first}.json';
         final storyRes = await http.get(storyUrl);
         if (res.statusCode == 200) {
-          expect(parseArticle(storyRes.body).by, "rahuldottech");
+          expect(parseArticle(storyRes.body), isNotNull);
         }
       }
     }
