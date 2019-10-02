@@ -1,7 +1,7 @@
 name: hn_app
 description: A new Flutter application.
 
-version: 0.5.0
+version: 0.6.0
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
