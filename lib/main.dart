@@ -1,11 +1,23 @@
-import 'package:flutter/material.dart';
-import 'src/article.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
+import 'dart:collection';
 
-void main() => runApp(MyApp());
+import 'package:flutter/material.dart';
+import 'package:hn_app/src/hn_bloc.dart';
+import 'package:hn_app/src/article.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void main() {
+  final hnBloc = HackerNewsBloc();
+  runApp(MyApp(bloc: hnBloc));
+}
 
 class MyApp extends StatelessWidget {
+  final HackerNewsBloc bloc;
+
+  MyApp({
+    Key key,
+    this.bloc,
+  }) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,13 +26,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Hacker News', bloc: bloc),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  final HackerNewsBloc bloc;
+
+  MyHomePage({Key key, this.title, this.bloc}) : super(key: key);
   final String title;
 
   @override
@@ -30,68 +44,63 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<Article> _articles = [];
 
-  List<int> _ids = [
-    9127761,
-    9128141,
-    9128264,
-    9127792,
-    9129248,
-    9127092,
-    9128367
-  ];
-
-  Future<Article> _getArticle(int id) async {
-    final storyUrl = 'https://hacker-news.firebaseio.com/v0/item/$id.json';
-    final storyRes = await http.get(storyUrl);
-    if (storyRes.statusCode == 200) {
-      return parseArticle(storyRes.body);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(
-        children: _ids
-            .map((i) => FutureBuilder<Article>(
-                  future: _getArticle(i),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<Article> snapshop) {
-                    if (snapshop.connectionState == ConnectionState.done){
-                      return _buildItem(snapshop.data);
-                    } else {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ))
-            .toList(),
+      body: StreamBuilder<UnmodifiableListView<Article>>(
+          stream: widget.bloc.articles,
+          initialData: UnmodifiableListView<Article>([]),
+          builder: (context, snapshot) => ListView(
+                children: snapshot.data.map(_buildItem).toList(),
+              )),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        items: [
+          BottomNavigationBarItem(
+            title: Text('Top Stories'),
+            icon: Icon(Icons.arrow_drop_up),
+          ),
+          BottomNavigationBarItem(
+            title: Text('Top Stories'),
+            icon: Icon(Icons.new_releases),
+          ),
+        ],
+        onTap: (index) {
+          if (index == 0){
+            print('Top Stories Tapped');
+            widget.bloc.storiesType.add(StoriesType.topStories);
+          }
+          else {
+            print('New Stories Tapped');
+            widget.bloc.storiesType.add(StoriesType.newStories);
+          }
+        },
       ),
     );
   }
 
   Widget _buildItem(Article article) {
-    return new Padding(
+    return Padding(
         key: Key(article.title),
         padding: const EdgeInsets.all(8.0),
-        child: new ExpansionTile(
-            title:
-                new Text(article.title, style: new TextStyle(fontSize: 24.0)),
+        child: ExpansionTile(
+            title: Text(article.title, style: TextStyle(fontSize: 24.0)),
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new Text("Score ${article.score}"),
-                  new IconButton(
+                  Text("Score ${article.score}"),
+                  IconButton(
                       onPressed: () async {
                         if (await canLaunch(article.url)) {
                           launch(article.url);
                         }
                       },
                       color: Colors.red,
-                      icon: new Icon(Icons.launch))
+                      icon: Icon(Icons.launch))
                 ],
               )
             ]));
