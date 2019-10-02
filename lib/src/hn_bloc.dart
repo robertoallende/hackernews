@@ -11,22 +11,11 @@ enum StoriesType {
 }
 
 class HackerNewsBloc {
+  HashMap<int, Article> _cachingArticles;
+
   final _articlesSubject = BehaviorSubject<UnmodifiableListView<Article>>();
 
   var _articles = <Article>[];
-
-  static List<int> _newIds = [
-    9127761,
-    9128141,
-    9128264,
-    9127792,
-  ];
-
-  static List<int> _topIds = [
-    9129248,
-    9127092,
-    9128367,
-  ];
 
   Sink<StoriesType> get storiesType => _stotiesTypeController.sink;
 
@@ -35,27 +24,50 @@ class HackerNewsBloc {
   final _stotiesTypeController = StreamController<StoriesType>();
 
   HackerNewsBloc() {
-    _getArticlesAndUpdate(_topIds);
+    _cachingArticles = HashMap<int, Article>();
 
-    _stotiesTypeController.stream.listen((storiesType) {
-      if (storiesType == StoriesType.newStories){
-        _getArticlesAndUpdate(_newIds);
-      } else {
-        _getArticlesAndUpdate(_topIds);
-      }
+    _initializeArticles();
+
+    _stotiesTypeController.stream.listen((storiesType) async {
+      _getArticlesAndUpdate(await _getIds(storiesType));
     });
+  }
+
+  Future<void> _initializeArticles() async {
+    _getArticlesAndUpdate(await _getIds(StoriesType.topStories));
+  }
+
+  void close() {
+    _stotiesTypeController.close();
   }
 
   Stream<List<Article>> get articles => _articlesSubject.stream;
 
   Stream<bool> get isLoading => _isLoadingSubject.stream;
 
+  static const _baseUrl = 'https://hacker-news.firebaseio.com/v0/';
+
   Future<Article> _getArticle(int id) async {
-    final storyUrl = 'https://hacker-news.firebaseio.com/v0/item/$id.json';
-    final storyRes = await http.get(storyUrl);
-    if (storyRes.statusCode == 200) {
-      return parseArticle(storyRes.body);
+    if (!_cachingArticles.containsKey(id)) {
+      final storyUrl = '$_baseUrl/item/$id.json';
+      final storyRes = await http.get(storyUrl);
+      if (storyRes.statusCode == 200) {
+        _cachingArticles[id] = parseArticle(storyRes.body);
+      } else {
+        throw HackerNewsApiError("Article $id couldn't be fetched");
+      }
     }
+    return _cachingArticles[id];
+  }
+
+  Future<List<int>> _getIds(StoriesType type) async {
+    final partUrl = type == StoriesType.topStories ? 'top' : 'new';
+    final url = '$_baseUrl${partUrl}stories.json';
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      return parseTopStories(response.body).take(10).toList();
+    }
+    throw HackerNewsApiError("Stories couldn't be fetched");
   }
 
   Future<Null> _updateArticles(List<int> articlesIds) async {
@@ -72,5 +84,10 @@ class HackerNewsBloc {
       _isLoadingSubject.add(false);
     });
   }
+}
 
+class HackerNewsApiError extends Error {
+  final String message;
+
+  HackerNewsApiError(this.message);
 }
