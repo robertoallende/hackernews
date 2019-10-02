@@ -92,9 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text(article.title, style: TextStyle(fontSize: 24.0)),
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Text("Score ${article.score}"),
+                  Text("${article.descendants} comments"),
                   IconButton(
                       onPressed: () async {
                         if (await canLaunch(article.url)) {

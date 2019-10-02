@@ -87,10 +87,17 @@ Resources mentioned
 Code Cleanup and Fixing Pub Versioning in Hacker News Ap [Episode video](https://www.youtube.com/watch?v=LrQWzOkC0XQ).
    
 Topics covered:
-- [Fixing Warning](https://youtu.be/LrQWzOkC0XQ?t=308)
-- [Fix for This class (or a class which this class inherits from) is marked as '@immutable'](https://youtu.be/LrQWzOkC0XQ?t=325) 
-- [Q&A: What if I've two blocs and I need to communicate one to the other](https://youtu.be/LrQWzOkC0XQ?t=681)
-- [Fetching ids of top and new stories](https://youtu.be/LrQWzOkC0XQ?t=788)
-- [How to solve when we want to use await in a constructor but constructors cannot be asynchronous](https://youtu.be/LrQWzOkC0XQ?t=1005)
-- [Recap](https://youtu.be/LrQWzOkC0XQ?t=1439)
-
+  - [Fixing Warning](https://youtu.be/LrQWzOkC0XQ?t=308)
+  - [Fix for This class (or a class which this class inherits from) is marked as '@immutable'](https://youtu.be/LrQWzOkC0XQ?t=325) 
+  - [Q&A: What if I've two blocs and I need to communicate one to the other](https://youtu.be/LrQWzOkC0XQ?t=681)
+  - [Fetching ids of top and new stories](https://youtu.be/LrQWzOkC0XQ?t=788)
+  - [How to solve when we want to use await in a constructor but constructors cannot be asynchronous](https://youtu.be/LrQWzOkC0XQ?t=1005)
+  - [Recap 1](https://youtu.be/LrQWzOkC0XQ?t=1439)
+  - [Showing # of comments](https://youtu.be/Bud7XR8crWw?t=47)
+  - [Add a cache](https://youtu.be/Bud7XR8crWw?t=136)
+  - [Publishing a Flutter App to the Play Store](https://www.youtube.com/watch?v=dR04ArAhxd4)
+  
+Resources mentioned
+  - [Preparing an Android app for release](https://flutter.dev/docs/deployment/android)
+  - [Preparing an iOS app for release](https://flutter.dev/docs/deployment/ios)
+  

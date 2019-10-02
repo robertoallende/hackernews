@@ -11,6 +11,8 @@ enum StoriesType {
 }
 
 class HackerNewsBloc {
+  HashMap<int, Article> _cachingArticles;
+
   final _articlesSubject = BehaviorSubject<UnmodifiableListView<Article>>();
 
   var _articles = <Article>[];
@@ -22,6 +24,8 @@ class HackerNewsBloc {
   final _stotiesTypeController = StreamController<StoriesType>();
 
   HackerNewsBloc() {
+    _cachingArticles = HashMap<int, Article>();
+
     _initializeArticles();
 
     _stotiesTypeController.stream.listen((storiesType) async {
@@ -33,8 +37,7 @@ class HackerNewsBloc {
     _getArticlesAndUpdate(await _getIds(StoriesType.topStories));
   }
 
-
-  void close(){
+  void close() {
     _stotiesTypeController.close();
   }
 
@@ -45,12 +48,16 @@ class HackerNewsBloc {
   static const _baseUrl = 'https://hacker-news.firebaseio.com/v0/';
 
   Future<Article> _getArticle(int id) async {
-    final storyUrl = '$_baseUrl/item/$id.json';
-    final storyRes = await http.get(storyUrl);
-    if (storyRes.statusCode == 200) {
-      return parseArticle(storyRes.body);
+    if (!_cachingArticles.containsKey(id)) {
+      final storyUrl = '$_baseUrl/item/$id.json';
+      final storyRes = await http.get(storyUrl);
+      if (storyRes.statusCode == 200) {
+        _cachingArticles[id] = parseArticle(storyRes.body);
+      } else {
+        throw HackerNewsApiError("Article $id couldn't be fetched");
+      }
     }
-    throw HackerNewsApiError("Article $id couldn't be fetched");
+    return _cachingArticles[id];
   }
 
   Future<List<int>> _getIds(StoriesType type) async {
@@ -77,10 +84,9 @@ class HackerNewsBloc {
       _isLoadingSubject.add(false);
     });
   }
-
 }
 
-class HackerNewsApiError extends Error{
+class HackerNewsApiError extends Error {
   final String message;
 
   HackerNewsApiError(this.message);
