@@ -45,7 +45,7 @@ Resources mentioned
 ### v0.4 - Episode 4
 Technical Debt and Streams/BLoC. [Episode video](https://www.youtube.com/watch?v=fahC3ky_zW0).
  
- Topics covered:
+Topics covered:
   - Refactor technical debt. Remove new. 
   - [Text Doc in Dart](https://youtu.be/fahC3ky_zW0?t=851)
   - [Json 2 built value](https://youtu.be/fahC3ky_zW0?t=965)
@@ -62,3 +62,19 @@ Technical Debt and Streams/BLoC. [Episode video](https://www.youtube.com/watch?v
 Resources mentioned
   - [json2builtvalue](https://github.com/charafau/json2builtvalue)
   
+### v0.5 - Episode 5
+Adding Animations to Your App. [Episode video](https://www.youtube.com/watch?v=dNSteCm-cEY).
+ 
+Topics covered:
+  - [Circular indicator from Bloc](https://youtu.be/dNSteCm-cEY?t=456)
+  - [Fix bottom nav tab button change bug](https://youtu.be/dNSteCm-cEY?t=730)
+  - [Bloc vs States](https://youtu.be/dNSteCm-cEY?t=790)
+  - [Stream bloc good practices](https://youtu.be/dNSteCm-cEY?t=1223)
+  - [Add Animations](https://youtu.be/dNSteCm-cEY?t=1965)
+  - [TickerProviderStateMixin vsync](https://youtu.be/dNSteCm-cEY?t=2164)
+  - [Tween and multiple pieces of animation](https://youtu.be/dNSteCm-cEY?t=2560)
+  
+Resources mentioned
+  - [Font Awesome Icons](https://pub.dev/packages/font_awesome_flutter)
+  - [Tween Animation](https://api.flutter.dev/flutter/animation/Tween-class.html)
+  - [Flutter Animations](https://flutter.dev/docs/development/ui/animations)

@@ -30,6 +30,8 @@ class HackerNewsBloc {
 
   Sink<StoriesType> get storiesType => _stotiesTypeController.sink;
 
+  final _isLoadingSubject = BehaviorSubject<bool>();
+
   final _stotiesTypeController = StreamController<StoriesType>();
 
   HackerNewsBloc() {
@@ -46,6 +48,8 @@ class HackerNewsBloc {
 
   Stream<List<Article>> get articles => _articlesSubject.stream;
 
+  Stream<bool> get isLoading => _isLoadingSubject.stream;
+
   Future<Article> _getArticle(int id) async {
     final storyUrl = 'https://hacker-news.firebaseio.com/v0/item/$id.json';
     final storyRes = await http.get(storyUrl);
@@ -60,9 +64,12 @@ class HackerNewsBloc {
     _articles = articles;
   }
 
-  _getArticlesAndUpdate(List<int> ids){
-    _updateArticles(ids).then((_) {
+  _getArticlesAndUpdate(List<int> ids) async {
+    _isLoadingSubject.add(true);
+
+    await _updateArticles(ids).then((_) {
       _articlesSubject.add(UnmodifiableListView(_articles));
+      _isLoadingSubject.add(false);
     });
   }
 
