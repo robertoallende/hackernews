@@ -20,13 +20,20 @@ class MyApp extends StatelessWidget {
     this.bloc,
   }) : super(key: key);
 
+  static const primaryColor = Colors.white;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: primaryColor,
+        canvasColor: Colors.black,
+        textTheme: Theme.of(context).textTheme.copyWith(
+            caption: TextStyle(color: Colors.white54),
+            subhead: TextStyle(fontFamily: 'LobsterRegular')),
       ),
       home: MyHomePage(title: 'Flutter Hacker News', bloc: bloc),
     );
@@ -49,9 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(widget.title),
-          leading: LoadingInfo(widget.bloc.isLoading)),
+      appBar:
+          AppBar(leading: LoadingInfo(widget.bloc.isLoading), elevation: 0.0),
       body: StreamBuilder<UnmodifiableListView<Article>>(
           stream: widget.bloc.articles,
           initialData: UnmodifiableListView<Article>([]),
@@ -87,24 +93,26 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildItem(Article article) {
     return Padding(
         key: Key(article.title),
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 12.0),
         child: ExpansionTile(
             title: Text(article.title, style: TextStyle(fontSize: 24.0)),
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text("${article.descendants} comments"),
-                  IconButton(
-                      onPressed: () async {
-                        if (await canLaunch(article.url)) {
-                          launch(article.url);
-                        }
-                      },
-                      color: Colors.red,
-                      icon: Icon(Icons.launch))
-                ],
-              )
+            children: [
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text("${article.descendants} comments"),
+                      SizedBox(width: 16.0),
+                      IconButton(
+                          onPressed: () async {
+                            if (await canLaunch(article.url)) {
+                              launch(article.url);
+                            }
+                          },
+                          icon: Icon(Icons.launch))
+                    ],
+                  )),
             ]));
   }
 }
