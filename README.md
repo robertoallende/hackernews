@@ -84,7 +84,7 @@ Resources mentioned
 ### Episodes 7: [Barometer Plugin part 2](https://www.youtube.com/watch?v=wQj-lKfBvbQ)  
    
 ### v0.6 - Episode 8
-Code Cleanup and Fixing Pub Versioning in Hacker News Ap [Episode video](https://www.youtube.com/watch?v=LrQWzOkC0XQ).
+Code Cleanup and Fixing Pub Versioning in Hacker News Ap. [Episode video](https://www.youtube.com/watch?v=LrQWzOkC0XQ).
    
 Topics covered:
   - [Fixing Warning](https://youtu.be/LrQWzOkC0XQ?t=308)
@@ -102,7 +102,7 @@ Resources mentioned
   - [Preparing an iOS app for release](https://flutter.dev/docs/deployment/ios)
   
 ### v0.7 - Episode 9
-Material Components, Material.io, and Theming.
+Material Components, Material.io, and Theming. [Episode video](https://youtu.be/kxSVpYc2osA).
 
 Topics covered:
   - [Material Guidelines](https://youtu.be/kxSVpYc2osA)
@@ -118,3 +118,5 @@ Resources mentioned
   - [Constrast Ratio](https://contrast-ratio.com/)
   - [Google Fonts](https://fonts.google.com)
   
+### v0.8 - Episode 10
+Flutter's Search Support. [Episode video](https://www.youtube.com/watch?v=Wm3OiFBZ2xI)  
