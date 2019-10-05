@@ -120,3 +120,30 @@ Resources mentioned
   
 ### v0.8 - Episode 10
 Flutter's Search Support. [Episode video](https://www.youtube.com/watch?v=Wm3OiFBZ2xI)  
+
+### Episode 11
+Exploring Flutter Samples and Examples. [Episode video](https://www.youtube.com/watch?v=mztMzzD8NiE)
+
+Topics covered:
+  - [inKino a cinema app for mobile and web/angular, parsing xml](https://youtu.be/mztMzzD8NiE?t=61)
+  - [MtechViral](https://youtu.be/mztMzzD8NiE?t=1044)
+  - [FittedBox sample](https://youtu.be/mztMzzD8NiE?t=1170)
+  - [Spacer](https://youtu.be/mztMzzD8NiE?t=1747)
+  - [FlipBirds Game](https://youtu.be/mztMzzD8NiE?t=2110)
+  - [Q&A with GDE](https://youtu.be/mztMzzD8NiE?t=3047) 
+
+Resources mentioned:
+  - [A curated list of samples](https://github.com/flutter/samples/blob/master/INDEX.md)
+  - [inKino](https://github.com/roughike/inKino)
+  - [MtechViral](https://www.youtube.com/channel/UCFTM1FGjZSkoSPDZgtbp7hA)
+  
+  
+### Episode 12
+Slivers Explained - Making Dynamic Layouts. [Episode Video](https://www.youtube.com/watch?v=Mz3kHQxBjGg)
+
+Topics covered: 
+  - [Flutters Layout and Slivers](https://youtu.be/Mz3kHQxBjGg?t=55)
+  - [SliverAppBar](https://youtu.be/Mz3kHQxBjGg?t=422)
+  
+  
+  
