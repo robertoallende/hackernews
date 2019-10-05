@@ -144,6 +144,67 @@ Slivers Explained - Making Dynamic Layouts. [Episode Video](https://www.youtube.
 Topics covered: 
   - [Flutters Layout and Slivers](https://youtu.be/Mz3kHQxBjGg?t=55)
   - [SliverAppBar](https://youtu.be/Mz3kHQxBjGg?t=422)
+    
+### Episode 13
+Influencing the Flutter SDK. [Episode Video](https://www.youtube.com/watch?v=nGlh4SVrsFg)
+
+### Episode 14
+Incorporating Web View into Your App. [Episode Video](https://www.youtube.com/watch?v=X3Wr7pSORSc)
   
+### Episode 15
+Using Flutter Inspector and Preserving Scroll Position. [Episode Video](https://www.youtube.com/watch?v=ht76lDzPgUQ)
   
+### Episode 16
+Shared Preferences, Switch Class & Modal Bottom Sheets. [Episode Video](https://www.youtube.com/watch?v=G-My77Yc27g)
+
+### Episode 17
+HackerNews Refactoring! Also, advanced Dart language features. [Episode Video](https://www.youtube.com/watch?v=D7_4KjTkKsw)
+
+### Episode 18
+Implicitly animating the Hacker News app. [Episode Video](https://www.youtube.com/watch?v=8ehlWchLVlQ)
+
+### Episode 19
+Building DashCast, a podcast app in Flutter. [Episode Video](https://www.youtube.com/watch?v=oyy_1CjNdBU)
+
+### Episode 20
+Shrine with Square - Adding In App Payments. [Episode Video](https://www.youtube.com/watch?v=_necENw9CUs)
+
+### Episode 21
+Testing Flutter Apps - Making Sure Your Code Works. [Episode Video](https://www.youtube.com/watch?v=bj-oMYyLZEY)
+
+### Episode 22
+Source Generation and Writing Your Own Package. [Episode Video](https://www.youtube.com/watch?v=mYDFOdl-aWM) 
+
+### Episode 23
+Mudeo App Overview. [Episode Video](https://www.youtube.com/watch?v=QFmrgkIwAds)
+
+### Episode 24
+Isolates and multithreading in Flutter. [Episode Video](https://www.youtube.com/watch?v=qrFTt1NZed8)
+  
+### Episode 24
+Pragmatic State Management Using Provider. [Episode Video](https://www.youtube.com/watch?v=HrBiNHEqSYU)
+
+Resources mentioned:
+  - Google I/O'19 Talk. [Full Video](https://www.youtube.com/watch?v=d_m5csmrf7I) 
+ 
+### Episode 25
+A Database For The HN App. [Episode Video](https://www.youtube.com/watch?v=9o_M-LjO4no)
+
+### Episode 26
+Create A Glitter Animation in Flutter. [Episode Video](https://www.youtube.com/watch?v=OTwIfUFZmVw)
+
+### Episode 27 
+Custom Drawer, Filing Bugs, Working with Databases. [Episode Video](https://www.youtube.com/watch?v=SJKrtx759Xk)
+
+### Episode 28
+Custom Drawer, Filing Bugs, Working with Databases. [Episode Video](https://www.youtube.com/watch?v=SJKrtx759Xk)
+
+### Episode 29
+Custom Navigator. [Episode Video](https://www.youtube.com/watch?v=EcAwFpC9S8s)
+
+### Episode 30
+Isolates and multithreading in Flutter. [Episode Video](https://www.youtube.com/watch?v=qrFTt1NZed8)
+
+Resources mentioned:
+  - [Isolates and Event Loops - Flutter in Focus](https://www.youtube.com/watch?v=vl_AaCgudcY)
   
