@@ -32,8 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: primaryColor,
         canvasColor: Colors.black,
         textTheme: Theme.of(context).textTheme.copyWith(
-            caption: TextStyle(color: Colors.white54),
-            subhead: TextStyle(fontFamily: 'LobsterRegular')),
+            caption: TextStyle(color: Colors.white54)),
       ),
       home: MyHomePage(title: 'Flutter Hacker News', bloc: bloc),
     );
@@ -57,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(leading: LoadingInfo(widget.bloc.isLoading), elevation: 0.0),
+          AppBar(
+              title: Text(widget.title, style: TextStyle(fontFamily: 'LobsterRegular')),
+              leading: LoadingInfo(widget.bloc.isLoading), elevation: 0.0),
       body: StreamBuilder<UnmodifiableListView<Article>>(
           stream: widget.bloc.articles,
           initialData: UnmodifiableListView<Article>([]),
